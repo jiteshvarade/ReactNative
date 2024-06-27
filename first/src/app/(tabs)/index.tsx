@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View, Text } from 'react-native';
+import { Image, StyleSheet, Platform, View, Text, FlatList } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -10,10 +10,17 @@ import ProductListItem from '@/components/ProductListItem';
 
 export default function HomeScreen() {
   return (
-    <View>
-      <ProductListItem product={products[0]}/>
-      <ProductListItem product={products[1]}/>
-    </View>
+    <FlatList 
+      data={products}
+      renderItem={({item})=>
+        < ProductListItem 
+          product={item}
+        />
+      }
+      numColumns={2}
+      contentContainerStyle={{gap : 10, padding : 10}}
+      columnWrapperStyle={{gap : 10}}
+    />
   );
 }
 
